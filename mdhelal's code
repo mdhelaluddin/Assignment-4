@@ -1,0 +1,60 @@
+
+
+
+
+
+import networkx as md
+
+import matplotlib.pyplot as plt
+
+%matplotlib inline
+
+#** Starting to create a new graph
+
+H = md.Graph()
+
+h = md.generators.small.krackhardt_kite_graph()
+
+
+print("Here are all Nodes of my krackhardt_kite_graph: ","\n",h.nodes(),"\n")
+print(" Here are the Edges of my krackhardt_kite_graph: ","\n",h.edges())
+
+#*** adding all persons nemes for creating nodes.
+
+
+person = {2:"md" ,5:"Helal", 7:"uddin", 8:"fariha", 9:"sultana", 6:"Joseph", 4:"Garcia", 1:"Trump", 3:"Hillary", 0:"Obama"}
+person
+
+#**Start to create new graph object
+
+H1 =md.Graph()
+
+#*****Start to create the Edges from the graph
+# *** First step ****
+
+a1 = [(0,1), (0,2), (0,3), (0,5), (1,3), (1,4), (1,6), (2,3), (2,5),
+     (3,4), (3,5), (3,6), (4,6), (5,6), (5,7), (6,7), (7,8), (8,9)]
+
+#*** Secound step ****
+
+a1 = h.edges()
+
+#*** Now connecting all the edges with graph object
+
+H1.add_edges_from(a1)
+
+print("Show all the edges of named network","\n" ,H1.edges())
+
+F = md.relabel_nodes(H1, person)
+print("----------------------\n")
+print(" Show all the nodes of named network: ", "\n", F.nodes())
+print("----------------------\n")
+print(" show all the edges of named network: ", "\n", F.edges())
+
+#*** here using draw keyword to draw the graph
+
+md.draw(F, with_labels =1)
+
+#*** here using show keyword to display my graph
+
+plt.show()
